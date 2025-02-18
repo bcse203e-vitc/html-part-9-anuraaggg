@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Appointment Booking</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title">Welcome to GT Online Booking Appointment Portal</div>
+        </div>
+        <br><br>
+        <div class="cards">
+            <div class="card doctor">
+                <div class="doctor-text">Doctor Consultation</div>
+                <div class="btn">
+                    <button class="button doctor" onclick="openBookingForm('Doctor Consultation')">Book Now</button>
+                </div>
+            </div>
+            <div class="card salon">
+                <div class="salon-text">Salon Appointment</div>
+                <div class="btn">
+                    <button class="button salon" onclick="openBookingForm('Salon Appointment')">Book Now</button>
+                </div>
+            </div>
+            <div class="card car">
+                <div class="car-text">Car<br> Service</div>
+                <div class="btn">
+                    <button class="button car" onclick="openBookingForm('Car Service')">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeBookingForm()">&times;</span>
+            <h2>Book Appointment</h2>
+            <form id="bookingForm">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+                <span id="nameError" class="error"></span>
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                <span id="emailError" class="error"></span>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required pattern="[0-9]{10}">
+                <span id="phoneError" class="error"></span>
+                <label for="service">Select Service</label>
+                <select id="service" required>
+                    <option value="Doctor Consultation">Doctor Consultation</option>
+                    <option value="Salon Appointment">Salon Appointment</option>
+                    <option value="Car Service">Car Service</option>
+                </select>
+                <label for="datetime">Preferred Date & Time</label>
+                <input type="datetime-local" id="datetime" required>
+                <span id="datetimeError" class="error"></span>
+                <label for="specialRequests">Special Requests (Optional)</label>
+                <textarea id="specialRequests"></textarea>
+                <label>
+                    <input type="checkbox" id="terms" required> Agree to Terms
+                </label>
+                <span id="termsError" class="error"></span>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="appointmentsDisplay" class="appointments">
+        <h3>Booked Appointments</h3>
+        <table id="appointmentsTable">
+            <tr>
+                <th>Customer Name</th>
+                <th>Service</th>
+                <th>Date & Time</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
